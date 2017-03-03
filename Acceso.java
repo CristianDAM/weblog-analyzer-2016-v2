@@ -5,15 +5,30 @@ public class Acceso
     private int dia;
     private int hora;
     private int minutos;
+    private String ip;
+    private String registro;
+    private String pagina;
+    private String respuesta;
 
     public Acceso(String parametrosAPasar)
     {
-        String[] parametrosConstructor = parametrosAPasar.split(" ");
-        ano = Integer.parseInt(parametrosConstructor[0]); 
-        mes = Integer.parseInt(parametrosConstructor[1]); 
-        dia = Integer.parseInt(parametrosConstructor[2]);
-        hora = Integer.parseInt(parametrosConstructor[3]); 
-        minutos = Integer.parseInt(parametrosConstructor[4]);               
+        String[] cadenaString = parametrosAPasar.split(" ");
+          this.ip = cadenaString[0];
+       
+          
+           
+        
+      
+            ano = Integer.parseInt(cadenaString[1].substring(1,5)); 
+            mes = Integer.parseInt(cadenaString[2]); 
+            dia = Integer.parseInt(cadenaString[3]);
+            hora = Integer.parseInt(cadenaString[4]); 
+            minutos = Integer.parseInt(cadenaString[5].substring(0,2));  
+          
+           
+            this.pagina = cadenaString[6];
+            this.respuesta = cadenaString[7];
+               
 
     }
 
