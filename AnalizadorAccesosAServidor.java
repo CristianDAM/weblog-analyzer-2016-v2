@@ -1,6 +1,7 @@
 import java.io.File;
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class AnalizadorAccesosAServidor
 {
@@ -20,14 +21,8 @@ public class AnalizadorAccesosAServidor
             while (sc.hasNextLine()) {
                 String lineaLeida = sc.nextLine();   
                 System.out.println(lineaLeida);
-                String[] nuevoArchivo = lineaLeida.split(" ");
-                String ip = nuevoArchivo[0];
-                String fecha = nuevoArchivo[1];
-                String pagina = nuevoArchivo[2];
-                String respuesta = nuevoArchivo[3];
 
                 Acceso accesoActual = new Acceso(lineaLeida);               
-
                 accesos.add(accesoActual);
             }
             sc.close();
@@ -64,10 +59,36 @@ public class AnalizadorAccesosAServidor
         return valorADevolver;
     }
 
-    
     public String paginaWebMasSolicitada() 
     {
-        return "";
+        HashMap<String,Integer> listaRegistros = new HashMap<>();
+
+        String nombrePaginaMasSolicitada = null;
+        int contadorNumeroPaginas = 0;
+        for(Acceso accesoNuevo : accesos)
+        {
+            String paginaAcceso = accesoNuevo.getPagina();
+
+            if (listaRegistros.get(paginaAcceso) == null)
+            {
+                listaRegistros.put(paginaAcceso, 1);
+            
+            
+            }
+            else{
+                int valorASumar = listaRegistros.get(paginaAcceso) + 1;
+                
+                
+                listaRegistros.put(paginaAcceso, valorASumar);
+            
+            
+            
+            }
+
+            
+        }
+
+        return nombrePaginaMasSolicitada;
     }
 
     public String clienteConMasAccesosExitosos()
