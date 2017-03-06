@@ -6,7 +6,7 @@ public class Acceso
     private int hora;
     private int minutos;
     private String ip;
-    private String registro;
+   
     private String pagina;
     private String respuesta;
 
@@ -55,5 +55,10 @@ public class Acceso
     public int getMinutos()
     {
         return minutos;
+    }
+    
+    public String getPagina()
+    {
+        return pagina;
     }
 }
